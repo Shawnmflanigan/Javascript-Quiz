@@ -13,7 +13,7 @@ let playerChoice = document.getElementById("choiceAnswer");
 
 // Timer Variables and Function
 let timeLeft = document.getElementById("timer");
-let time = 60;
+var time = 60;
 
  setTime= () => {
     let timerInterval = setInterval (function() {
@@ -122,9 +122,11 @@ choices.forEach( choice => {
             if (selectedAnswer == currentQuestion.answer) {
                 classAnswer = 'right';
                 playerChoice.innerText = 'You are Correct';
+                score = (score + 1);
             }   else {
                 classAnswer = 'wrong';
                 playerChoice.innerText = 'You are Wrong';
+                time = (time - 10);
             } 
 
         getNewQuestion()
