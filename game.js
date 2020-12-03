@@ -1,7 +1,7 @@
 
 // Question and Choices DOM 
-const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName("choice-text"));
+let question = document.getElementById("question");
+let choices = Array.from(document.getElementsByClassName("choice-text"));
 
 let currentQuestion ={};
 let acceptingAnswers = false;
@@ -9,15 +9,17 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+let playerChoice = document.getElementById("choiceAnswer");
+
 // Timer Variables and Function
 let timeLeft = document.getElementById("timer");
-let time = 10;
+let time = 60;
 
-function setTime() {
+ setTime= () => {
     let timerInterval = setInterval (function() {
     time--;
     timeLeft.textContent = "Time: " + time;
-
+    
     if(time === 0) {
         clearInterval(timerInterval);
         window.location.href ="highscore.html";
@@ -72,10 +74,13 @@ let questions = [
         choice4: "if i == 5 then",
         answer: 1 
     },
+    // Add more questions here
 ]
 
+// If we add more questions and limit the number of questions enter the max questions here.
 const max_questions = 5
 
+// Start Game Function
 startGame = () => {
     questionCounter = 0;
     score = 0;
@@ -84,9 +89,10 @@ startGame = () => {
     getNewQuestion();
 };
 
+// Question generator function randomly ordered.
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= max_questions) {
-        return window.location.assign(".end.html");
+        return window.location.assign("highscore.html");
     }
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -103,16 +109,27 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 };
 
-choices.forEach(choice => {
+// Choice selector and functions.
+choices.forEach( choice => {
     choice.addEventListener('click', e => {
         if(!acceptingAnswers) return;
 
-        acceptingAnswers= false;
+        acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
-        console.log(selectedAnswer);
-        getNewQuestion();
+
+        let classAnswer = 'wrong';
+            if (selectedAnswer == currentQuestion.answer) {
+                classAnswer = 'right';
+                playerChoice.innerText = 'You are Correct';
+            }   else {
+                classAnswer = 'wrong';
+                playerChoice.innerText = 'You are Wrong';
+            } 
+
+        getNewQuestion()
     });
 });
 
+// Run Start Game
 startGame ();

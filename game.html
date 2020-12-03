@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <h1>View Highscores<span style="float:right" id="timer"></span></h1>
+    <h1 style="float:right" id="timer"></h1>
     <div class="container">
         <div id="game" class="justify-center flex-column"> 
             <h2 id="question">What is the answer to this question</h2>
@@ -28,6 +28,9 @@
                 <p class=choice-prefix>D</p>
                 <p class="choice-text" data-number="4">Choice 4</p>
             </div>
+            <div id="rightWrong"></div>
+                <p id ="choiceAnswer">Are you right or wrong</p>
+            </div>    
         </div>
     </div>
     <script src="game.js"></script>
