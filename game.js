@@ -92,6 +92,7 @@ startGame = () => {
 // Question generator function randomly ordered.
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= max_questions) {
+        localStorage.setItem('newScore' , score);
         return window.location.assign("highscore.html");
     }
     questionCounter++;

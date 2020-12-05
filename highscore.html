@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
-    <title>Quick Quiz Highscore</title>
+    <title>Enter Initials</title>
 </head>
 <body>
-    <h1><a href="index.html">Play Again</a></h1>
     <div class="container">
         <div id = "displayScore" class = "flex-center flex-column">
-            <h2>Highscore</h2>
-            <h3>Input initials</h3>
-            <form method="POST">
-                <div class='inputInitials'>
-                <input type="text" name= 'initials' id='initials'>    
-                </div>
-
+            <h1 id = 'finalScore'>0</h1>
+            <form>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="username"
+                />
+                <button type='submit' class='btn' id='saveScoreBtn' onclick="saveHighScore(event)"
+                >
+                    Save
+                </button>
             </form>
+            <a class= 'btn' href='index.html'>Start Over</a>
+            <a class= 'btn' href='end.html'>HighScores</a>
+
+
+
 
         </div>
 
 
 
     </div>
-    
+    <script src="highscore.js"></script>
 </body>
 </html>
