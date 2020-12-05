@@ -1,7 +1,7 @@
 # This is a simple Javascript Quiz
 
 ## General Info
-This is a simple password generator which meets the following conditions:
+This is a simple quiz which meets the following conditions:
 * Functional, deployed application
 * GitHub repository with README describing the project
 * A quiz which asks 5 questions given over a 60 second period.
